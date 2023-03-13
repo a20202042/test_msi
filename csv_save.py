@@ -198,7 +198,8 @@ def main():
     from os.path import isfile, join
     import matplotlib.pyplot as plt
     dir_list = [
-        'C:\\Users\\User\\PycharmProjects\\test_msi\\save_img\\test\\all\\0',
+        'save_img\\test\\all\\1',
+        'save_img\\test\\all\\0',
     ]
 
     point_data = []
@@ -215,8 +216,9 @@ def main():
             # print(item)
             img = cv2.imread(mypath + '\\' + item)
             point, img_ = hand_input(img)
-            print(len(point))
+            # print(len(point))
             if point != [] and len(point) == 63:
+                point.append(str(dir_list.index(mypath)))
                 point_data.append(point)
             # hand_ = item.split('.')[0] + 'hand_detection'
             # print(mypath + '\\' + hand_)
@@ -229,7 +231,7 @@ def main():
 point_data = main()
 import csv
 
-with open('data.csv', 'w', newline='') as file:
+with open('data_ann.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     # writer.writerow([1, "Ash Ketchum", "English"])
     # writer.writerow([2, "Gary Oak", "Mathematics"])
